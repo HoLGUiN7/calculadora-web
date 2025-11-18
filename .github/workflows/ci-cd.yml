@@ -111,6 +111,16 @@ jobs:
       run: |
         python -m unittest pruebas/test_operaciones.py -v
         
+    - name: Desplegar en Render
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}
+        
+    - name: Verificar despliegue
+      run: |
+        echo "Despliegue iniciado en Render"
+        echo "El servicio debería estar disponible en breve"
         
   # Job de notificaciones
   notifications:
